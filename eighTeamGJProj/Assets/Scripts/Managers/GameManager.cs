@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Image GameOver_newRecord;
-    public Image GameOver_oldRecord;
+    public Image GameOverScreen;
 
     public float targetAlpha;
     public float FadeRate;
@@ -17,8 +16,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool state)
     {
-        if (state == true) StartCoroutine(FadeIn(GameOver_newRecord));
-        else StartCoroutine(FadeIn(GameOver_oldRecord));
+        StartCoroutine(FadeIn(GameOverScreen));
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -27,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         targetAlpha = 1.0f;
         Color curColor = image.color;
-        while (Mathf.Abs(curColor.a - targetAlpha) > 0.0001f)
+        while ((Mathf.Abs(1.0f - curColor.a)) > 0.0001f)
         {
             curColor.a = Mathf.Lerp(curColor.a, targetAlpha, FadeRate * Time.deltaTime);
             image.color = curColor;
@@ -35,6 +33,7 @@ public class GameManager : MonoBehaviour
         }
         quitButton.SetActive(true);
         restartButton.SetActive(true);
+  
     }
 
     public void Restart()
