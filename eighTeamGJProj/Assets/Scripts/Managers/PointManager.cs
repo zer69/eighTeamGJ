@@ -12,7 +12,7 @@ public class PointManager : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
-            scoreEvent.Raise(other.GetComponent<Coin>().value);
+            scoreEvent.Raise(other.GetComponent<CoinController>().coinPrice);
             Destroy(other.gameObject);
         }
     }

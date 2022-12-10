@@ -67,6 +67,10 @@
     <Compile Include="Assets\Scripts\Managers\Health.cs" />
     <Compile Include="Assets\Scripts\Managers\PointManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Coin.cs" />
+    <Compile Include="Assets\Scripts\Controllers\ProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\MovementController.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CoinController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

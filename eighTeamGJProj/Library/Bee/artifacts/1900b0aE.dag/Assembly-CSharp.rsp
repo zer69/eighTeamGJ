@@ -354,6 +354,9 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/Controllers/CoinController.cs"
+"Assets/Scripts/Controllers/MovementController.cs"
+"Assets/Scripts/Controllers/ProjectileController.cs"
 "Assets/Scripts/DefaultEvent/BoolEvent/b_GameEvent.cs"
 "Assets/Scripts/DefaultEvent/BoolEvent/b_GameEventListener.cs"
 "Assets/Scripts/DefaultEvent/GameEvent.cs"
@@ -365,6 +368,7 @@
 "Assets/Scripts/Managers/Health.cs"
 "Assets/Scripts/Managers/HealthManager.cs"
 "Assets/Scripts/Managers/PointManager.cs"
+"Assets/Scripts/Managers/SpawnManager.cs"
 -langversion:9.0
 
 /deterministic

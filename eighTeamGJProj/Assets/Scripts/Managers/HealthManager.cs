@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    private int hp = 4;
+    public int hp;
 
     public b_GameEvent damageEvent;
+
+    public b_GameEvent gameOver;
 
 
 
@@ -14,6 +16,7 @@ public class HealthManager : MonoBehaviour
     {
         if ((other.tag == "Projectile") || (other.tag == "HealthKit"))
         {
+           
             damageEvent.Raise(other.GetComponent<Health>().hp);
             Destroy(other.gameObject);
         }
@@ -22,5 +25,8 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(bool value)
     {
         hp += (value ? 1 : -1);
+        if (hp == 0)
+            gameOver.Raise(true);
+        
     }
 }
