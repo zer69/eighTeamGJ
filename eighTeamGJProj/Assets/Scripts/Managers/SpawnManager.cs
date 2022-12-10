@@ -11,7 +11,12 @@ public class SpawnManager : MonoBehaviour
     public float ySpawnCoinsHeight = 10f;
     public float coinSpawnInterval = 4f;
 
-    public GameObject coin;
+    public float ySpawnProjectileHeight = 2f;
+    public float xProjectileSpawnRange = 10f;
+    public float projectileSpawnInterval = 4f;
+
+    public GameObject[] coins;
+    public GameObject boot;
 
     public bool gameOver = false;
 
@@ -19,6 +24,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("SpawnCoins", coinSpawnInterval, coinSpawnInterval);
+        InvokeRepeating("SpawnProjectiles", projectileSpawnInterval, projectileSpawnInterval);
     }
 
     // Update is called once per frame
@@ -32,8 +38,19 @@ public class SpawnManager : MonoBehaviour
         float randomX = Random.Range(xSpawnCoinsLeftBound, xSpawnCoinsRightBound);
         float randomZ = Random.Range(zSpawnCoinsBotBound, zSpawnCoinsTopBound);
 
-        Vector3 powerupPos = new Vector3(randomX, ySpawnCoinsHeight, randomZ);
+        int randomIndex = Random.Range(0, coins.Length);
 
-        Instantiate(coin, powerupPos, coin.gameObject.transform.rotation);
+        Vector3 coinPos = new Vector3(randomX, ySpawnCoinsHeight, randomZ);
+
+        Instantiate(coins[randomIndex], coinPos, coins[randomIndex].gameObject.transform.rotation);
+    }
+
+    private void SpawnProjectiles()
+    {
+        float randomZ = Random.Range(zSpawnCoinsBotBound, zSpawnCoinsTopBound);
+
+        Vector3 bootPos = new Vector3(xProjectileSpawnRange, ySpawnProjectileHeight, randomZ);
+
+        Instantiate(boot, bootPos, boot.gameObject.transform.rotation);
     }
 }
