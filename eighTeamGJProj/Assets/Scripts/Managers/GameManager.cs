@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Image GameOver_newRecord;
-    public Image GameOver_oldRecord;
+    public Image GameOverScreen;
 
     public float targetAlpha;
     public float FadeRate;
@@ -17,9 +16,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver(bool state)
     {
-
-        if (state == true) StartCoroutine(FadeIn(GameOver_newRecord));
-        else StartCoroutine(FadeIn(GameOver_oldRecord));
+        StartCoroutine(FadeIn(GameOverScreen));
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

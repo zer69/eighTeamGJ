@@ -71,6 +71,9 @@
     <Compile Include="Assets\Scripts\Controllers\MovementController.cs" />
     <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\Controllers\CoinController.cs" />
+    <Compile Include="Assets\Scripts\Managers\BuffManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\Buff.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CoinRotator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

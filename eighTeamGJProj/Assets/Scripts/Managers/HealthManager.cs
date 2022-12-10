@@ -10,6 +10,7 @@ public class HealthManager : MonoBehaviour
 
     public b_GameEvent gameOver;
 
+    public bool protectedByShield = false;
 
 
     private void OnTriggerEnter(Collider other)
@@ -24,9 +25,17 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(bool value)
     {
-        hp += (value ? 1 : -1);
-        if (hp == 0)
-            gameOver.Raise(true);
+        if (protectedByShield)
+        {
+            protectedByShield = false;
+        }
+        else
+        {
+            hp += (value ? 1 : -1);
+            if (hp == 0)
+                gameOver.Raise(true);
+        }
+        
         
     }
 }

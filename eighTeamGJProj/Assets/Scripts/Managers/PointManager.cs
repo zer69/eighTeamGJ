@@ -8,6 +8,8 @@ public class PointManager : MonoBehaviour
 
     public i_GameEvent scoreEvent;
 
+    public bool multiplied = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Coin")
@@ -19,6 +21,9 @@ public class PointManager : MonoBehaviour
 
     public void GetPoints(int value)
     {
-        currentScore += value;
+        if (!multiplied)
+            currentScore += value;
+        else
+            currentScore += value * 2;
     }
 }

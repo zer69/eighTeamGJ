@@ -6,7 +6,7 @@ public class MovementController : MonoBehaviour
 {
     public float rotSpeed = 15f;
     public float moveSpeed = 6f;
-    
+
     private CharacterController _charController;
     // Start is called before the first frame update
     void Start()
@@ -39,4 +39,20 @@ public class MovementController : MonoBehaviour
         movement *= Time.deltaTime;
         _charController.Move(movement);
     }    
+
+    public void ChangeSpeed(int factor)
+    {
+        switch (factor)
+        {
+            case -1:
+                moveSpeed = moveSpeed * 0.75f;
+                break;
+            case 0:
+                moveSpeed = 6f;
+                break;
+            case 1:
+                moveSpeed = moveSpeed * 1.25f;
+                break;
+        }
+    }
 }
