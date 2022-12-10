@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public float rotSpeed = 15f;
+    private float rotSpeed = 15f;
     public float moveSpeed = 6f;
 
     private CharacterController _charController;

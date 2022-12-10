@@ -57,23 +57,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CoinController.cs" />
+    <Compile Include="Assets\Scripts\Managers\Coin.cs" />
+    <Compile Include="Assets\Scripts\Managers\BuffManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\HealthManager.cs" />
     <Compile Include="Assets\Scripts\DefaultEvent\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Managers\Buff.cs" />
+    <Compile Include="Assets\Scripts\Managers\PointManager.cs" />
     <Compile Include="Assets\Scripts\DefaultEvent\BoolEvent\b_GameEventListener.cs" />
+    <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\DefaultEvent\BoolEvent\b_GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CoinRotator.cs" />
+    <Compile Include="Assets\Scripts\Controllers\ProjectileController.cs" />
+    <Compile Include="Assets\Scripts\Managers\Health.cs" />
     <Compile Include="Assets\Scripts\DefaultEvent\GameEventListener.cs" />
     <Compile Include="Assets\Scripts\DefaultEvent\IntEvent\i_GameEvent.cs" />
     <Compile Include="Assets\Scripts\DefaultEvent\IntEvent\i_GameEventListener.cs" />
-    <Compile Include="Assets\Scripts\Managers\HealthManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\Health.cs" />
-    <Compile Include="Assets\Scripts\Managers\PointManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\Coin.cs" />
-    <Compile Include="Assets\Scripts\Controllers\ProjectileController.cs" />
     <Compile Include="Assets\Scripts\Controllers\MovementController.cs" />
-    <Compile Include="Assets\Scripts\Managers\SpawnManager.cs" />
-    <Compile Include="Assets\Scripts\Controllers\CoinController.cs" />
-    <Compile Include="Assets\Scripts\Managers\BuffManager.cs" />
-    <Compile Include="Assets\Scripts\Managers\Buff.cs" />
-    <Compile Include="Assets\Scripts\Controllers\CoinRotator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
