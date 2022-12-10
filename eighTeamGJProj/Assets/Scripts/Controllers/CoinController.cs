@@ -14,6 +14,14 @@ public class CoinController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyCoin();
+    }
+
+    void DestroyCoin()
+    {
+        if (transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }

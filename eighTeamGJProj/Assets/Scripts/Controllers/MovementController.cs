@@ -31,10 +31,11 @@ public class MovementController : MonoBehaviour
             movement.x = horInput * moveSpeed;
             movement.z = verInput * moveSpeed;
             movement = Vector3.ClampMagnitude(movement, moveSpeed);
-        }
-        
-        Quaternion direction = Quaternion.LookRotation(movement);
-        transform.rotation = Quaternion.Lerp(transform.rotation, direction, rotSpeed * Time.deltaTime);
+
+            Quaternion direction = Quaternion.LookRotation(movement);
+            transform.rotation = Quaternion.Lerp(transform.rotation, direction, rotSpeed * Time.deltaTime);
+        }        
+
 
         movement *= Time.deltaTime;
         _charController.Move(movement);

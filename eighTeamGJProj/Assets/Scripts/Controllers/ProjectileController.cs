@@ -7,7 +7,7 @@ public class ProjectileController : MonoBehaviour
     public float speed;
 
     private Rigidbody bootRb;
-    private float xBound = 30f;
+    private float xBound = -30f;
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class ProjectileController : MonoBehaviour
     void Update()
     {
         bootRb.AddForce(Vector3.left * speed, ForceMode.Impulse);
-        if (transform.position.x > xBound)
+        if (transform.position.x < xBound)
         {
             Destroy(gameObject);
         }
