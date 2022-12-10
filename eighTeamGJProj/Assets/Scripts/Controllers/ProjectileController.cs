@@ -6,23 +6,51 @@ public class ProjectileController : MonoBehaviour
 {
     public float speed;
 
-    private Rigidbody bootRb;
-    private float xBound = -30f;
+    public Rigidbody bootRb;
+    public SpawnManager spawnManager;
+    private Vector3 side;
+    private float xBound = 30f;
+    private float zBound = 30f;
+    private int direction;
     private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         bootRb = GetComponent<Rigidbody>();
+        BootDirection();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bootRb.AddForce(Vector3.left * speed, ForceMode.Impulse);
-        if (transform.position.x < xBound)
+        bootRb.AddForce(side * speed, ForceMode.Impulse);
+        if (transform.position.x > xBound || transform.position.x < -xBound || transform.position.z > zBound)
         {
             Destroy(gameObject);
         }
+    }
+
+    void BootDirection()
+    {
+        direction = spawnManager.projectileDirection;
+        switch (direction)
+        {
+            case 4:
+                side = Vector3.back;
+                break;
+            case 3:
+                side = Vector3.forward;
+                break;
+            case 2:
+                side = Vector3.right;
+                break;
+            case 1:
+                side =  Vector3.left;
+                break;
+        }
+
+
     }
 }
