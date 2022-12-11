@@ -11,6 +11,7 @@ public class MovementController : MonoBehaviour
     [Header("buffs")]
     public float boost = 2f;
     public float decrease = 0.5f;
+    public Animator _anim;
 
     private CharacterController _charController;
     // Start is called before the first frame update
@@ -30,6 +31,8 @@ public class MovementController : MonoBehaviour
     {
         Vector3 movement = Vector3.zero;
 
+
+
         float horInput = Input.GetAxis("Horizontal");
         float verInput = Input.GetAxis("Vertical");
         if (horInput != 0 || verInput != 0)
@@ -42,6 +45,14 @@ public class MovementController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, direction, rotSpeed * Time.deltaTime);
         }        
 
+        if (movement == Vector3.zero)
+        {
+            _anim.SetFloat("speed", 0);
+        }
+        else
+        {
+            _anim.SetFloat("speed", 1);
+        }
 
         movement *= Time.deltaTime;
         _charController.Move(movement);
