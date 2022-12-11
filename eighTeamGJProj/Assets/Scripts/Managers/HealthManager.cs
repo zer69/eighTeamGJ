@@ -17,7 +17,7 @@ public class HealthManager : MonoBehaviour
 
     void Update()
     {
-        mText.text = "HP: " + hp.ToString();
+        mText.text = hp.ToString();
     }
 
 

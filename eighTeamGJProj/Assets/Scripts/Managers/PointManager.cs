@@ -17,7 +17,7 @@ public class PointManager : MonoBehaviour
 
     void Update()
     {
-        mText.text = "Score: " + currentScore.ToString();
+        mText.text = currentScore.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
