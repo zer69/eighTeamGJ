@@ -264,20 +264,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5ed598847cd1e7499fa552f02970b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpawnCoinsLeftBound: -10
-  xSpawnCoinsRightBound: 10
-  zSpawnCoinsTopBound: 10
-  zSpawnCoinsBotBound: -10
+  xSpawnAreaLeftBound: -10
+  xSpawnAreaRightBound: 10
+  zSpawnAreaTopBound: 10
+  zSpawnAreaBotBound: -10
   ySpawnCoinsHeight: 10
   coinSpawnInterval: 0.3
   ySpawnProjectileHeight: 2
   xProjectileSpawnRange: 10
+  zProjectileSpawnRange: 15
   projectileSpawnInterval: 0.7
   projectileDirection: 0
+  secondPhaseStartTime: 5
+  thirdPhaseStartTime: 10
+  ySpawnBuffsHeight: 1
+  buffSpawnInterval: 5
+  debuffSpawnInterval: 5
   coins:
   - {fileID: 7558693512044993541, guid: 1747ab5a661486b43bba596e1315fbc3, type: 3}
   - {fileID: 138663803087815729, guid: 5f78718b60ada6443939136eaa03aa5d, type: 3}
   - {fileID: 4465018248857007963, guid: 6cabd2aff39c12245b4ae41fc64413fe, type: 3}
+  buffs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  debuffs:
+  - {fileID: 0}
   boot: {fileID: 8878611768561695126, guid: 30d57a5189cfb114da72cfe3f65a30ca, type: 3}
   gameOver: 0
 --- !u!4 &649267731
@@ -1975,6 +1987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: 15
   moveSpeed: 6
+  zBound: 10
+  xBound: 10
 --- !u!143 &2010513355
 CharacterController:
   m_ObjectHideFlags: 0
