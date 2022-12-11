@@ -35,7 +35,7 @@ public class CoinController : MonoBehaviour
 
     IEnumerator Expire()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
         DestroyCoin();
     }
 
