@@ -159,9 +159,9 @@ public class SpawnManager : MonoBehaviour
 
         int randomIndex = Random.Range(0, debuffs.Length);
 
-        Vector3 buffPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
+        Vector3 debuffPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
 
-        Instantiate(buffs[randomIndex], buffPos, buffs[randomIndex].gameObject.transform.rotation);
+        Instantiate(debuffs[randomIndex], debuffPos, debuffs[randomIndex].gameObject.transform.rotation);
     }
 
     void Timer()
