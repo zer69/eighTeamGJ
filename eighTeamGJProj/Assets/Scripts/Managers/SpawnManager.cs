@@ -29,9 +29,11 @@ public class SpawnManager : MonoBehaviour
     public float ySpawnBuffsHeight = 1f;
     [Header("Time for Buffs")]
     public float buffSpawnInterval = 5f;
+    public float debuffSpawnInterval = 5f;
 
     public GameObject[] coins;
     public GameObject[] buffs;
+    public GameObject[] debuffs;
     public GameObject boot;
 
         
@@ -45,6 +47,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnCoins", coinSpawnInterval, coinSpawnInterval);
         InvokeRepeating("SpawnProjectiles", projectileSpawnInterval, projectileSpawnInterval);
         InvokeRepeating("SpawnBuffs", buffSpawnInterval, buffSpawnInterval);
+        InvokeRepeating("SpawnDebuffs", debuffSpawnInterval, debuffSpawnInterval);
     }
 
     // Update is called once per frame
@@ -143,6 +146,18 @@ public class SpawnManager : MonoBehaviour
         float randomZ = Random.Range(zSpawnAreaBotBound, zSpawnAreaTopBound);
 
         int randomIndex = Random.Range(0, buffs.Length);
+
+        Vector3 buffPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
+
+        Instantiate(buffs[randomIndex], buffPos, buffs[randomIndex].gameObject.transform.rotation);
+    }
+
+    void SpawnDebuffs()
+    {
+        float randomX = Random.Range(xSpawnAreaLeftBound, xSpawnAreaRightBound);
+        float randomZ = Random.Range(zSpawnAreaBotBound, zSpawnAreaTopBound);
+
+        int randomIndex = Random.Range(0, debuffs.Length);
 
         Vector3 buffPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
 

@@ -12,6 +12,9 @@ public class MovementController : MonoBehaviour
     public float boost = 2f;
     public float decrease = 0.5f;
 
+    public float zBound = 10f;
+    public float xBound = 10f;
+
     private CharacterController _charController;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +27,7 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        ConstrainPlayerPosition();
     }
 
     void PlayerMovement()
@@ -45,7 +49,28 @@ public class MovementController : MonoBehaviour
 
         movement *= Time.deltaTime;
         _charController.Move(movement);
-    }    
+    }
+
+    void ConstrainPlayerPosition()
+    {
+        if (transform.position.z > zBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
+        }
+        else if (transform.position.z < -zBound)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zBound);
+        }
+
+        if (transform.position.x > xBound)
+        {
+            transform.position = new Vector3(xBound, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x < -xBound)
+        {
+            transform.position = new Vector3(-xBound, transform.position.y, transform.position.z);
+        }
+    }
 
     public void ChangeSpeed(bool status)
     {
