@@ -13,6 +13,16 @@ public class BuffManager : MonoBehaviour
     public b_GameEvent multiCoin;
     public b_GameEvent takeDamage;
 
+    [Header("buff Duration")]
+    public float speedDuration = 3f;
+    public float bearTrapDuration = 3f;
+    public float shieldDuration = 5f;
+    public float multiCoinDuration = 10f;
+
+    private bool sphereUp = false;
+    private bool multiUp = false;
+    private bool speedUp = false;
+    private bool trapUp = false;
 
 
     private void OnTriggerEnter(Collider other)
@@ -20,7 +30,17 @@ public class BuffManager : MonoBehaviour
         if (other.tag == "Sphere")
         {
             shieldGained.Raise(true);
-            StartCoroutine(SphereCoolDown());
+            if (sphereUp)
+            {
+                StopCoroutine(SphereCoolDown());
+                StartCoroutine(SphereCoolDown());
+            }
+            else
+            {
+                StartCoroutine(SphereCoolDown());
+                sphereUp = true;
+            }
+            
             Destroy(other.gameObject);
         }
 
@@ -28,7 +48,17 @@ public class BuffManager : MonoBehaviour
         {
 
             multiCoin.Raise(true);
-            StartCoroutine(MultiCoinCoolDown());
+            if (multiUp)
+            {
+                StopCoroutine(MultiCoinCoolDown());
+                StartCoroutine(MultiCoinCoolDown());
+            }
+            else
+            {
+                StartCoroutine(MultiCoinCoolDown());
+                multiUp = true;
+            }
+            
             Destroy(other.gameObject);
         }
 
@@ -36,7 +66,17 @@ public class BuffManager : MonoBehaviour
         {
 
             speedChange.Raise(true);
-            StartCoroutine(SpeedCoolDown());
+            if (speedUp)
+            {
+                StopCoroutine(SpeedCoolDown());
+                StartCoroutine(SpeedCoolDown());
+            }
+            else
+            {
+                StartCoroutine(SpeedCoolDown());
+                speedUp = true;
+            }
+            
             Destroy(other.gameObject);
         }
 
@@ -44,33 +84,43 @@ public class BuffManager : MonoBehaviour
         {
 
             bearTrap.Raise(true);
+            if (trapUp)
+            {
+                StopCoroutine(BearTrapCoolDown());
+                StartCoroutine(BearTrapCoolDown());
+            }
+            else
+            {
+                StartCoroutine(BearTrapCoolDown());
+                trapUp = true;
+            }
+            
             takeDamage.Raise(false);
-            StartCoroutine(BearTrapCoolDown());
             Destroy(other.gameObject);
         }
     }
 
     IEnumerator SphereCoolDown()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(shieldDuration);
         shieldGained.Raise(false);
     }
 
     IEnumerator MultiCoinCoolDown()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(multiCoinDuration);
         multiCoin.Raise(false);
     }
 
     IEnumerator SpeedCoolDown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(speedDuration);
         speedChange.Raise(false);
     }
 
     IEnumerator BearTrapCoolDown()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(bearTrapDuration);
         bearTrap.Raise(false);
     }
 

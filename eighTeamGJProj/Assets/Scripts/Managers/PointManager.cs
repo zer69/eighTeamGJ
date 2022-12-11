@@ -13,6 +13,8 @@ public class PointManager : MonoBehaviour
 
     public TextMeshProUGUI mText;
 
+    public GameObject buffContainer;
+
     void Update()
     {
         mText.text = "Score: " + currentScore.ToString();
@@ -38,5 +40,6 @@ public class PointManager : MonoBehaviour
     public void SetMultiCoin(bool status)
     {
         multiplied = status;
+        buffContainer.SetActive(status);
     }
 }

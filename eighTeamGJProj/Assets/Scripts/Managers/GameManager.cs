@@ -13,6 +13,19 @@ public class GameManager : MonoBehaviour
 
     public GameObject quitButton;
     public GameObject restartButton;
+    public GameObject playButton;
+
+    public GameObject SpawnManager;
+    public GameObject Score;
+    public GameObject Hp;
+
+    void Start()
+    {
+        playButton.SetActive(true);
+        SpawnManager.SetActive(false);
+        Hp.SetActive(false);
+        Score.SetActive(false);
+    }
 
     public void GameOver(bool state)
     {
@@ -44,5 +57,13 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+    
+    public void Play()
+    {
+        playButton.SetActive(false);
+        SpawnManager.SetActive(true);
+        Hp.SetActive(true);
+        Score.SetActive(true);
     }
 }
