@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - SpeedBoost
   - BearTrap
+  - Sphere
+  - MultiCoin
   layers:
   - Default
   - TransparentFX
