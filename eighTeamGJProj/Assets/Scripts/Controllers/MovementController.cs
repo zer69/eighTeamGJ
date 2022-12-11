@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    [Header("movement")]
     public float rotSpeed = 15f;
-    private float defMoveSpeed = 6f;
-    public float moveSpeed;
+    public float defMoveSpeed = 6f;
+    private float moveSpeed;
+    [Header("buffs")]
+    public float boost = 2f;
+    public float decrease = 0.5f;
 
     public float zBound = 10f;
     public float xBound = 10f;

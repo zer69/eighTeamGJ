@@ -4,23 +4,30 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Header("Area for coins")]
     public float xSpawnAreaLeftBound = -10f;
     public float xSpawnAreaRightBound = 10f;
     public float zSpawnAreaTopBound = 10f;
     public float zSpawnAreaBotBound = -10f;
     public float ySpawnCoinsHeight = 10f;
+    [Header("Time for coins")]
     public float coinSpawnInterval = 4f;
 
+    [Header("Area for projectiles")]
     public float ySpawnProjectileHeight = 2f;
     public float xProjectileSpawnRange = 10f;
     public float zProjectileSpawnRange = 15f;
-    public float projectileSpawnInterval = 4f;
     public int projectileDirection;
-
+    [Header("Time for Projectiles")]
+    public float projectileSpawnInterval = 4f;
+    
+    
+    [Header("Time for Difficulty")]
     public float secondPhaseStartTime = 5f;
     public float thirdPhaseStartTime = 10f;
 
     public float ySpawnBuffsHeight = 1f;
+    [Header("Time for Buffs")]
     public float buffSpawnInterval = 5f;
     public float debuffSpawnInterval = 5f;
 
@@ -30,7 +37,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject boot;
 
         
-    public bool gameOver = false;
+    //public bool gameOver = false;
 
     private float currentTime = 0;
 
