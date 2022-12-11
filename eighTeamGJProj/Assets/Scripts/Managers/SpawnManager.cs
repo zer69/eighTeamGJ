@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public float xSpawnCoinsLeftBound = -10f;
-    public float xSpawnCoinsRightBound = 10f;
-    public float zSpawnCoinsTopBound = 10f;
-    public float zSpawnCoinsBotBound = -10f;
+    public float xSpawnAreaLeftBound = -10f;
+    public float xSpawnAreaRightBound = 10f;
+    public float zSpawnAreaTopBound = 10f;
+    public float zSpawnAreaBotBound = -10f;
     public float ySpawnCoinsHeight = 10f;
     public float coinSpawnInterval = 4f;
 
     public float ySpawnProjectileHeight = 2f;
     public float xProjectileSpawnRange = 10f;
+    public float zProjectileSpawnRange = 15f;
     public float projectileSpawnInterval = 4f;
     public int projectileDirection;
 
+    public float secondPhaseStartTime = 5f;
+    public float thirdPhaseStartTime = 10f;
+
+    public float ySpawnBuffsHeight = 1f;
+    public float buffSpawnInterval = 5f;
+
     public GameObject[] coins;
+    public GameObject[] buffs;
     public GameObject boot;
 
         
@@ -29,6 +37,7 @@ public class SpawnManager : MonoBehaviour
     {
         InvokeRepeating("SpawnCoins", coinSpawnInterval, coinSpawnInterval);
         InvokeRepeating("SpawnProjectiles", projectileSpawnInterval, projectileSpawnInterval);
+        InvokeRepeating("SpawnBuffs", buffSpawnInterval, buffSpawnInterval);
     }
 
     // Update is called once per frame
@@ -39,8 +48,8 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnCoins()
     {
-        float randomX = Random.Range(xSpawnCoinsLeftBound, xSpawnCoinsRightBound);
-        float randomZ = Random.Range(zSpawnCoinsBotBound, zSpawnCoinsTopBound);
+        float randomX = Random.Range(xSpawnAreaLeftBound, xSpawnAreaRightBound);
+        float randomZ = Random.Range(zSpawnAreaBotBound, zSpawnAreaTopBound);
 
         int randomIndex = Random.Range(0, coins.Length);
 
@@ -51,10 +60,10 @@ public class SpawnManager : MonoBehaviour
 
     private void SpawnProjectiles()
     {
-        float randomZ = Random.Range(zSpawnCoinsBotBound, zSpawnCoinsTopBound);
-        float randomX = Random.Range(-xProjectileSpawnRange, xProjectileSpawnRange);
+        float randomX = Random.Range(xSpawnAreaLeftBound, xSpawnAreaRightBound);
+        float randomZ = Random.Range(zSpawnAreaBotBound, zSpawnAreaTopBound);
 
-        if (currentTime < 5f)
+        if (currentTime < secondPhaseStartTime)
         {
 
             Vector3 bootPos = new Vector3(xProjectileSpawnRange, ySpawnProjectileHeight, randomZ);
@@ -64,7 +73,7 @@ public class SpawnManager : MonoBehaviour
             Instantiate(boot, bootPos, boot.gameObject.transform.rotation);
         }
 
-        else if(currentTime < 10f)
+        else if(currentTime < thirdPhaseStartTime)
         {
 
             int randomSide = Random.Range(0, 2);
@@ -92,13 +101,13 @@ public class SpawnManager : MonoBehaviour
             {
                 //case 4:
                 //    projectileDirection = 4;
-                //    Vector3 bootPos4 = new Vector3(randomX, ySpawnProjectileHeight, zSpawnCoinsTopBound);
+                //    Vector3 bootPos4 = new Vector3(randomX, ySpawnProjectileHeight, zProjectileSpawnRange);
 
                 //    Instantiate(boot, bootPos4, boot.gameObject.transform.rotation);
                 //    break;
                 case 3:
                     projectileDirection = 3;
-                    Vector3 bootPos3 = new Vector3(randomX, ySpawnProjectileHeight, zSpawnCoinsBotBound);
+                    Vector3 bootPos3 = new Vector3(randomX, ySpawnProjectileHeight, -zProjectileSpawnRange);
 
                     Instantiate(boot, bootPos3, boot.gameObject.transform.rotation * Quaternion.Euler(0f, 90f, 0f));
                     break;
@@ -119,6 +128,18 @@ public class SpawnManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void SpawnBuffs()
+    {
+        float randomX = Random.Range(xSpawnAreaLeftBound, xSpawnAreaRightBound);
+        float randomZ = Random.Range(zSpawnAreaBotBound, zSpawnAreaTopBound);
+
+        int randomIndex = Random.Range(0, buffs.Length);
+
+        Vector3 buffPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
+
+        Instantiate(buffs[randomIndex], buffPos, buffs[randomIndex].gameObject.transform.rotation);
     }
 
     void Timer()
