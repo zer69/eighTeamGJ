@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FadeIn(GameOverScreen));
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        SpawnManager.SetActive(true);
     }
 
     IEnumerator FadeIn(Image image)
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("BaseScene");
+        SceneManager.LoadScene("Sample3");
     }
 
     public void Quit()

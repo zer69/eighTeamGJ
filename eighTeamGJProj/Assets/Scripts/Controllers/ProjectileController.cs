@@ -9,8 +9,8 @@ public class ProjectileController : MonoBehaviour
     public Rigidbody bootRb;
     public SpawnManager spawnManager;
     private Vector3 side;
-    private float xBound = 30f;
-    private float zBound = 30f;
+    private float xBound = 100f;
+    private float zBound = 100f;
     private int direction;
     private GameManager gameManager;
 

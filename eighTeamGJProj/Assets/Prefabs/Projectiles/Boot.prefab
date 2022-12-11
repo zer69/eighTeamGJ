@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baade2d629152bf44b9b0067f804b4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.01
+  speed: 0.02
   bootRb: {fileID: 8878611768561695120}
   spawnManager: {fileID: 0}
 --- !u!54 &8878611768561695120

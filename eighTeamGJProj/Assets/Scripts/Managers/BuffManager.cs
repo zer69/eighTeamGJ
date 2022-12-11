@@ -24,6 +24,11 @@ public class BuffManager : MonoBehaviour
     private bool speedUp = false;
     private bool trapUp = false;
 
+    public AudioSource sphere;
+    public AudioSource multi;
+    public AudioSource speed;
+    public AudioSource trap;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -103,25 +108,37 @@ public class BuffManager : MonoBehaviour
     IEnumerator SphereCoolDown()
     {
         yield return new WaitForSeconds(shieldDuration);
+        sphere.volume = 0f;
         shieldGained.Raise(false);
+        yield return new WaitForSeconds(2f);
+        sphere.volume = 1f;
     }
 
     IEnumerator MultiCoinCoolDown()
     {
         yield return new WaitForSeconds(multiCoinDuration);
+        multi.volume = 0f;
         multiCoin.Raise(false);
+        yield return new WaitForSeconds(2f);
+        multi.volume = 1f;
     }
 
     IEnumerator SpeedCoolDown()
     {
         yield return new WaitForSeconds(speedDuration);
+        speed.volume = 0f;
         speedChange.Raise(false);
+        yield return new WaitForSeconds(2f);
+        speed.volume = 1f;
     }
 
     IEnumerator BearTrapCoolDown()
     {
         yield return new WaitForSeconds(bearTrapDuration);
+        trap.volume = 0f;
         bearTrap.Raise(false);
+        yield return new WaitForSeconds(2f);
+        trap.volume = 1f;
     }
 
 }
