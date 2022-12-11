@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    private float rotSpeed = 15f;
-    public float moveSpeed = 6f;
+    public float rotSpeed = 15f;
+    private float defMoveSpeed = 6f;
+    public float moveSpeed;
 
     private CharacterController _charController;
     // Start is called before the first frame update
     void Start()
     {
+        moveSpeed = defMoveSpeed;
         _charController = GetComponent<CharacterController>();
     }
 
@@ -41,19 +43,27 @@ public class MovementController : MonoBehaviour
         _charController.Move(movement);
     }    
 
-    public void ChangeSpeed(int factor)
+    public void ChangeSpeed(bool status)
     {
-        switch (factor)
+        if (status)
         {
-            case -1:
-                moveSpeed = moveSpeed * 0.75f;
-                break;
-            case 0:
-                moveSpeed = 6f;
-                break;
-            case 1:
-                moveSpeed = moveSpeed * 1.25f;
-                break;
+            moveSpeed = moveSpeed * 2f;
+        }
+        else
+        {
+            moveSpeed = defMoveSpeed;
+        }
+    }
+
+    public void DecreaseSpeed(bool status)
+    {
+        if (status)
+        {
+            moveSpeed = moveSpeed * 0.5f;
+        }
+        else
+        {
+            moveSpeed = defMoveSpeed;
         }
     }
 }

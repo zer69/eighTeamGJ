@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PointManager : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class PointManager : MonoBehaviour
     public i_GameEvent scoreEvent;
 
     public bool multiplied = false;
+
+    public TextMeshProUGUI mText;
+
+    void Update()
+    {
+        mText.text = "Score: " + currentScore.ToString();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,5 +33,10 @@ public class PointManager : MonoBehaviour
             currentScore += value;
         else
             currentScore += value * 2;
+    }
+
+    public void SetMultiCoin(bool status)
+    {
+        multiplied = status;
     }
 }
