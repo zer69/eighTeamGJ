@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinPrice: 1
+  landed: {fileID: 0}
 --- !u!114 &1775017194724474410
 MonoBehaviour:
   m_ObjectHideFlags: 0

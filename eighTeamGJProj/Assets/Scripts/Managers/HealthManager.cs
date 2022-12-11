@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class HealthManager : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class HealthManager : MonoBehaviour
 
     public b_GameEvent gameOver;
 
-    public bool protectedByShield = false;
+    public bool protectedByShield;
+
+    public TextMeshProUGUI mText;
+
+    void Update()
+    {
+        mText.text = "HP: " + hp.ToString();
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -25,11 +33,7 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(bool value)
     {
-        if (protectedByShield)
-        {
-            protectedByShield = false;
-        }
-        else
+        if (!protectedByShield)
         {
             hp += (value ? 1 : -1);
             if (hp == 0)
@@ -37,5 +41,10 @@ public class HealthManager : MonoBehaviour
         }
         
         
+    }
+
+    public void SetShield(bool status)
+    {
+        protectedByShield = status;
     }
 }

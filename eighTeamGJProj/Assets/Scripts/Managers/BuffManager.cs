@@ -7,59 +7,71 @@ public class BuffManager : MonoBehaviour
 
     public bool speedCDRunning = false;
 
-    public i_GameEvent speedChange;
+    public b_GameEvent speedChange;
+    public b_GameEvent bearTrap;
+    public b_GameEvent shieldGained;
+    public b_GameEvent multiCoin;
+    public b_GameEvent takeDamage;
+
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Sphere")
         {
-            this.GetComponent<HealthManager>().protectedByShield = true;
+            shieldGained.Raise(true);
+            StartCoroutine(SphereCoolDown());
             Destroy(other.gameObject);
         }
 
         if (other.tag == "MultiCoin")
         {
 
-            this.GetComponentInChildren<PointManager>().multiplied = true;
+            multiCoin.Raise(true);
+            StartCoroutine(MultiCoinCoolDown());
             Destroy(other.gameObject);
         }
 
         if (other.tag == "SpeedBoost")
         {
 
-            speedChange.Raise(1);
-            if (speedCDRunning)
-            {
-                StopCoroutine(ReturnToNormalSpeed());
-                StartCoroutine(ReturnToNormalSpeed());
-            }
-            else
-                StartCoroutine(ReturnToNormalSpeed());
+            speedChange.Raise(true);
+            StartCoroutine(SpeedCoolDown());
             Destroy(other.gameObject);
         }
 
         if (other.tag == "BearTrap")
         {
 
-            speedChange.Raise(-1);
-            if (speedCDRunning)
-            {
-                StopCoroutine(ReturnToNormalSpeed());
-                StartCoroutine(ReturnToNormalSpeed()); 
-            }
-            else
-                StartCoroutine(ReturnToNormalSpeed());
-
+            bearTrap.Raise(true);
+            takeDamage.Raise(false);
+            StartCoroutine(BearTrapCoolDown());
             Destroy(other.gameObject);
         }
-
-        IEnumerator ReturnToNormalSpeed()
-        {
-            speedCDRunning = true;
-            yield return new WaitForSeconds(3f);
-            speedChange.Raise(0);
-            speedCDRunning = false;
-        }
-
     }
+
+    IEnumerator SphereCoolDown()
+    {
+        yield return new WaitForSeconds(5f);
+        shieldGained.Raise(false);
+    }
+
+    IEnumerator MultiCoinCoolDown()
+    {
+        yield return new WaitForSeconds(10f);
+        multiCoin.Raise(false);
+    }
+
+    IEnumerator SpeedCoolDown()
+    {
+        yield return new WaitForSeconds(3f);
+        speedChange.Raise(false);
+    }
+
+    IEnumerator BearTrapCoolDown()
+    {
+        yield return new WaitForSeconds(3f);
+        bearTrap.Raise(false);
+    }
+
 }
