@@ -30,10 +30,12 @@ public class SpawnManager : MonoBehaviour
     [Header("Time for Buffs")]
     public float buffSpawnInterval = 5f;
     public float debuffSpawnInterval = 5f;
+    public float healthSpawnInterval = 5f;
 
     public GameObject[] coins;
     public GameObject[] buffs;
     public GameObject[] debuffs;
+    public GameObject health;
     public GameObject boot;
 
         
@@ -48,6 +50,7 @@ public class SpawnManager : MonoBehaviour
         InvokeRepeating("SpawnProjectiles", projectileSpawnInterval, projectileSpawnInterval);
         InvokeRepeating("SpawnBuffs", buffSpawnInterval, buffSpawnInterval);
         InvokeRepeating("SpawnDebuffs", debuffSpawnInterval, debuffSpawnInterval);
+        InvokeRepeating("SpawnHealth", healthSpawnInterval, healthSpawnInterval);
     }
 
     // Update is called once per frame
@@ -162,6 +165,16 @@ public class SpawnManager : MonoBehaviour
         Vector3 debuffPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
 
         Instantiate(debuffs[randomIndex], debuffPos, debuffs[randomIndex].gameObject.transform.rotation);
+    }
+
+    void SpawnHealth()
+    {
+        float randomX = Random.Range(xSpawnAreaLeftBound, xSpawnAreaRightBound);
+        float randomZ = Random.Range(zSpawnAreaBotBound, zSpawnAreaTopBound);
+
+        Vector3 healPos = new Vector3(randomX, ySpawnBuffsHeight, randomZ);
+
+        Instantiate(health, healPos, health.gameObject.transform.rotation);
     }
 
     void Timer()
