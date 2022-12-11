@@ -361,6 +361,7 @@ MonoBehaviour:
   ySpawnBuffsHeight: 1
   buffSpawnInterval: 10
   debuffSpawnInterval: 7.5
+  healthSpawnInterval: 1
   coins:
   - {fileID: 7558693512044993541, guid: 1747ab5a661486b43bba596e1315fbc3, type: 3}
   - {fileID: 138663803087815729, guid: 5f78718b60ada6443939136eaa03aa5d, type: 3}
@@ -369,9 +370,9 @@ MonoBehaviour:
   - {fileID: 7415298872425475362, guid: acc3f27f975d27347a335f2d44735bb8, type: 3}
   - {fileID: 18224238790752127, guid: c535c52bd884e504f8dcc0eb7f8b41fd, type: 3}
   - {fileID: 6340249061670591604, guid: 6cd8ef72f2b4d074885d43fe3926672d, type: 3}
-  - {fileID: 824831181977044783, guid: cb85b2398c47b63448bd1b52d5f8269c, type: 3}
   debuffs:
   - {fileID: 5814613023109268012, guid: 0eafad9513d987e4f893ba8963dd5270, type: 3}
+  health: {fileID: 824831181977044783, guid: cb85b2398c47b63448bd1b52d5f8269c, type: 3}
   boot: {fileID: 8878611768561695126, guid: 30d57a5189cfb114da72cfe3f65a30ca, type: 3}
 --- !u!4 &649267731
 Transform:
